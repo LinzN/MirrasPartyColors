@@ -1,5 +1,5 @@
 local ADDON = ...
-local PREFIX = "|cff33ccffMSPC|r: "
+local PREFIX = "|cff33ccffMPC|r: "
 
 local L = {
     SUBTITLE      = "Class colors for the original party frames.",
@@ -14,7 +14,7 @@ local L = {
     SHUFFLE       = "Shuffle classes",
     RESET         = "Restore defaults",
     RESET_DONE    = "Settings restored to defaults.",
-    HINT          = "Note: Only affects the original party frames. \"Use Raid-Style Party Frames\" must be disabled in the Blizzard options.\nQuick access: /mspc",
+    HINT          = "Note: Only affects the original party frames. \"Use Raid-Style Party Frames\" must be disabled in the Blizzard options.\nQuick access: /mpc",
     ON            = "on",
     OFF           = "off",
     CHAT_ENABLED  = "Class colors",
@@ -208,11 +208,11 @@ f:RegisterEvent("UNIT_CONNECTION")
 f:SetScript("OnEvent", function(self, event, arg1)
     if event == "ADDON_LOADED" then
         if arg1 ~= ADDON then return end
-        MSPC_DB = MSPC_DB or {}
+        MPC_DB = MPC_DB or {}
         for k, v in pairs(defaults) do
-            if MSPC_DB[k] == nil then MSPC_DB[k] = v end
+            if MPC_DB[k] == nil then MPC_DB[k] = v end
         end
-        db = MSPC_DB
+        db = MPC_DB
 
         if PartyFrame and type(PartyFrame.UpdatePartyFrames) == "function" then
             hooksecurefunc(PartyFrame, "UpdatePartyFrames", UpdateAll)
@@ -236,7 +236,7 @@ f:SetScript("OnEvent", function(self, event, arg1)
     C_Timer.After(0, UpdateAll)
 end)
 
-local PANEL_NAME = "Mirra's Simple Party Colors"
+local PANEL_NAME = "Mirra's Party Colors"
 local settingsCategory
 local panel
 local checkboxes = {}
@@ -499,9 +499,8 @@ end
 
 local function OnOff(v) return v and ("|cff00ff00" .. L.ON .. "|r") or ("|cffff0000" .. L.OFF .. "|r") end
 
-SLASH_MSPC1 = "/mspc"
-SLASH_MSPC2 = "/mspartycolors"
-SlashCmdList.MSPC = function(msg)
+SLASH_MPC1 = "/mpc"
+SlashCmdList.MPC = function(msg)
     msg = (msg or ""):lower():match("^%s*(.-)%s*$")
     if msg == "toggle" then
         db.enabled = not db.enabled
