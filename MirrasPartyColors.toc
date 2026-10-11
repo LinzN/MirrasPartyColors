@@ -2,7 +2,7 @@
 ## Title: Mirra's Party Colors
 ## Notes: Shows class colors on the original Blizzard party frames (not raid frames).
 ## Author: Kekshaus
-## Version: 1.5.0
+## Version: 1.5.1
 ## IconTexture: Interface\AddOns\MirrasPartyColors\Logo
 ## SavedVariables: MPC_DB
 

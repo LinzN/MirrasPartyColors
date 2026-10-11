@@ -283,6 +283,7 @@ end
 
 CreateOptionsPanel = function()
     panel = CreateFrame("Frame")
+    panel:Hide()
     panel.name = PANEL_NAME
 
     local title = panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
